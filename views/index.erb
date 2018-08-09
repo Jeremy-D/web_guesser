@@ -4,6 +4,28 @@
 	<title></title>
 </head>
 <body>
-	<p>"The secret number is " <%= number %></p>
+	<h3>Guess a Number!</h3>
+	<form>
+		<input type="text" name="guess">
+		<input type="submit" name="Guess!">
+	</form>
+	<p>Previous guess: <%= params['guess'] %></p>
+	<!-- <p>The secret number is <%= number %></p>  -->
+	<p>
+	<%=
+	if (params['guess'].to_i - 5) > number
+		"That number is way too high!"
+	elsif (params['guess'].to_i + 5).to_i < number
+		"That number is way too low!"
+	elsif params['guess'].to_i < number
+		"That number is too low!"	
+	elsif params['guess'].to_i > number
+		"That number is too high!"
+	elsif params['guess'].to_i === number
+		"That number is just right! The secret number is #{number}"
+	end
+
+	%>
+	</p>
 </body>
 </html>
